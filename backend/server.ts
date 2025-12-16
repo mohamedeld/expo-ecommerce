@@ -3,12 +3,17 @@ import path from "path";
 import { clerkMiddleware } from "@clerk/express";
 import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
+import { serve } from "inngest/express";
+import { functions, inngest } from "./config/inngest.js";
 
 const app = express();
 
 const port = ENV.PORT || 3030;
 
+app.use(express.json());
 app.use(clerkMiddleware());
+
+app.use("/api/inngest", serve({ client: inngest, functions: functions }));
 
 app.get("/", (req, res) => {
   res.status(200).json({
