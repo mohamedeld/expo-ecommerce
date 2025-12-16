@@ -1,12 +1,8 @@
 import mongoose, { model, Schema } from "mongoose";
 import type { InferSchemaType } from "mongoose";
 
-export const addressSchema = new Schema(
+export const shipmentAddressSchema = new Schema(
   {
-    label: {
-      type: String,
-      required: true,
-    },
     fullName: {
       type: String,
       required: true,
@@ -27,16 +23,15 @@ export const addressSchema = new Schema(
       type: String,
       required: true,
     },
-    isDefault: {
-      type: Boolean,
-      default: false,
-    },
   },
   { timestamps: true }
 );
 
-export type AddressDocument = InferSchemaType<typeof addressSchema>;
+export type ShipmentAddressDocument = InferSchemaType<
+  typeof shipmentAddressSchema
+>;
 
-const Address =
-  mongoose.models.Address ?? model<AddressDocument>("Address", addressSchema);
-export default Address;
+const ShipmentAddress =
+  mongoose.models.ShipmentAddress ??
+  model<ShipmentAddressDocument>("ShipmentAddress", shipmentAddressSchema);
+export default ShipmentAddress;
