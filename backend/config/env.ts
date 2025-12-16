@@ -1,0 +1,13 @@
+import "dotenv/config";
+
+export const ENV = {
+  PORT: process.env.PORT,
+  NODE_ENV: process.env.NODE_ENV,
+  DB_URL: process.env.DB_URL,
+  CLERK_PUBLISHABLE_KEY: process.env.CLERK_PUBLISHABLE_KEY,
+  CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
+  INNGEST_SIGNING_KEY: process.env.INNGEST_SIGNING_KEY,
+  CLOUDINARY_APIKEY: process.env.CLOUDINARY_APIKEY,
+  CLOUDINARY_SECRETKEY: process.env.CLOUDINARY_SECRETKEY,
+  CLOUDINARY_NAME: process.env.CLOUDINARY_NAME,
+};
