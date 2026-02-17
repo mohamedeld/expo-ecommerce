@@ -5,7 +5,7 @@ import { ENV } from "./config/env.js";
 import { connectDB } from "./config/db.js";
 import { serve } from "inngest/express";
 import { functions, inngest } from "./config/inngest.js";
-
+import adminRoutes from "./routes/admin.route.js";
 const app = express();
 
 const port = ENV.PORT || 3030;
@@ -20,6 +20,8 @@ app.get("/", (req, res) => {
     message: "Success",
   });
 });
+
+app.use("/api/admin", adminRoutes);
 
 if (ENV.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../../admin/dist")));
